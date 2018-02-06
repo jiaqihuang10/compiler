@@ -1,4 +1,4 @@
-#Pretty Printer 
+# Pretty Printer 
 
 - Given input code in a messy coding style, test if there is any syntax error according to the grammar in simple.g, and construct the abstract syntax tree (AST) for the input code.
 - Use a visitor to go through the AST, and output the code conforming to the specific coding style as follows:
