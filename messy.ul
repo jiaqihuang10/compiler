@@ -1,0 +1,93 @@
+
+int counter (int n, float inc) {
+
+	int result;
+
+	//stat8 - atom0
+	result = n;
+
+	// stat 2
+	if (result < 100) { //loneExpr
+		result = (result*2 + inc) + 1;  //ltwoExpr, lthreeExpr atom1, atom4
+	}
+
+	if (result == 100) { //expr
+		print result;		println ("Reached 100");	
+		return 100;			//atom1
+	} else {	return result;	}	
+}boolean fill_array (int k, int m) {
+	int index;
+	index = 0;
+
+	int[10] arr;		
+
+	while (index < 11.1) { 	
+		arr[index] = k;		
+	}
+	if (k < 100) {return true;
+	} else {
+		return false;
+	}
+}
+
+//another test
+int factorial (int n) {
+	if (n==1) {
+		return 1;
+	}
+			
+			else {
+		return n*factorial(n-1); 
+	}
+}
+
+
+//main function
+void main() { 
+	
+	char c;float f;
+	int k;
+	k = 2;
+	
+
+	c = 'a';
+	f = 2.88;
+	string empty;
+	empty = ""; string not_empty;
+	non_empty = "string";
+
+	;
+	if (f < 1) {
+	if (x==1) { while (a < 2) {b=1;c=3;}
+		return;}
+	}
+
+	//exprList, atom3
+	n = counter(k,f);
+
+	print "The factorial of 8 is "; println factorial(8);
+}
+
+//from assignment specs
+int sampleOne (int x, float y) {
+
+if (x<y) {
+
+print "Hello"; } else {
+
+print "Goodbye"; } return x*y;
+
+} void sampleTwo (int x) {
+
+float[10] b; while (x<10) { x=x-1; } x=8;
+
+} void main () {
+
+string[10] a;
+
+int w;
+
+println sampleOne(10,9.3);
+
+sampleTwo(); }
+
