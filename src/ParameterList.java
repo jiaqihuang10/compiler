@@ -1,8 +1,11 @@
 package ast;
 
 import java.util.Vector;
+<<<<<<< HEAD
 import semantics.*;
 import type.*;
+=======
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
 
 public class ParameterList extends ASTNode {
     //more parameters in function declarations
@@ -23,7 +26,10 @@ public class ParameterList extends ASTNode {
         v.visit(this);
     }
 
+<<<<<<< HEAD
     public Type accept(TypeVisitor v) throws SemanticException {
         return v.visit(this);
     }
+=======
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
 }

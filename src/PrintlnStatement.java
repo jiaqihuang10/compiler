@@ -1,5 +1,6 @@
 package ast;
 
+<<<<<<< HEAD
 import semantics.*;
 import type.*;
 
@@ -25,13 +26,23 @@ public class PrintlnStatement extends Statement {
 
     public Expression getPrintlnExpr() {
         return expr;
+=======
+public class PrintlnStatement extends Statement {
+    Expression expr;
+
+    public PrintlnStatement (Expression e) {
+        expr = e;
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     }
 
     public void accept (Visitor v) {
         v.visit(this);
     }
+<<<<<<< HEAD
 
     public Type accept (TypeVisitor v) throws SemanticException {
         return v.visit(this);
     }
+=======
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
 }

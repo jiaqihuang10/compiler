@@ -92,6 +92,7 @@ compoundType returns [TypeNode tn] :
 
 
 arrayType returns [TypeNode tn]
+<<<<<<< HEAD
 @init{
     Type at = null;
 }
@@ -100,10 +101,16 @@ arrayType returns [TypeNode tn]
 }
     : t=type OPENSQR l=integerLiteral CLOSESQR
     {  at = new ArrayType(t,l);}
+=======
+    : t=type OPENSQR l=integerLiteral CLOSESQR
+    { Type tt = new ArrayType(t,l);
+      tn = new TypeNode(tt); }
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 
 type returns [TypeNode tn]
+<<<<<<< HEAD
     :
      tp=BOOLEANTYPE
         { tn = new TypeNode(new BooleanType(),$tp.line, $tp.pos); }
@@ -117,10 +124,32 @@ type returns [TypeNode tn]
         { tn = new TypeNode(new IntegerType(),$tp.line, $tp.pos); }
     | tp=FLOATTYPE
         { tn = new TypeNode(new FloatType(),$tp.line, $tp.pos); }
+=======
+@init{
+    Type t = null;
+}
+@after {
+    tn = new TypeNode(t);
+}
+    :
+    BOOLEANTYPE
+        { t = new BooleanType();}
+    | STRINGTYPE
+        { t = new StringType();}
+    | CHARTYPE
+        { t = new CharType();}
+    | VOIDTYPE
+        { t = new VoidType();}
+    | INTEGERTYPE
+        { t = new IntegerType();}
+    | FLOATTYPE
+        { t = new FloatType();}
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 
 id returns [Identifier i]
+<<<<<<< HEAD
     : s=ID { i = new Identifier($s.text, $s.line, $s.pos); }
 	;
 
@@ -130,6 +159,14 @@ idr returns [IdentifierReference ir]
 //statements
 statement returns [Statement s]:
       f=SEMICOLON {s = new ExpressionStatement(new StringLiteral("",$f.line, $f.pos));}
+=======
+    : s=ID { i = new Identifier($s.text); }
+	;
+
+//statements
+statement returns [Statement s]:
+      SEMICOLON {s = new ExpressionStatement(new StringLiteral(""));}
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     | a=exprStatement {s=a;}
     | a=ifStatement {s=a;}
     | a=whileStatement {s=a;}
@@ -149,23 +186,41 @@ ifStatement returns [Statement is]
     is = i;
 }
     :
+<<<<<<< HEAD
     IF o=OPENPAREN e=expr CLOSEPAREN b1=block
     { i = new IfStatement(e,b1,$o.line, $o.pos);}
+=======
+    IF OPENPAREN e=expr CLOSEPAREN b1=block
+    { i = new IfStatement(e,b1);}
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     (ELSE b2=block  { i.setB2(b2); })?
     ;
 
 whileStatement returns [Statement ws]
+<<<<<<< HEAD
     : WHILE o=OPENPAREN e=expr CLOSEPAREN b=block
     { ws = new WhileStatement(e,b, $o.line, $o.pos); }
     ;
 
 printStatement returns [Statement ps]
     : PRINT e=expr s=SEMICOLON { ps = new PrintStatement(e, $s.line, $s.pos); }
+=======
+    : WHILE OPENPAREN e=expr CLOSEPAREN b=block
+    { ws = new WhileStatement(e,b); }
+    ;
+
+printStatement returns [Statement ps]
+    : PRINT e=expr SEMICOLON { ps = new PrintStatement(e); }
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 
 printlnStatement returns [Statement ps]
+<<<<<<< HEAD
     : PRINTLN e=expr s=SEMICOLON { ps = new PrintlnStatement(e, $s.line, $s.pos); }
+=======
+    : PRINTLN e=expr SEMICOLON { ps = new PrintlnStatement(e); }
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 returnStatement returns [Statement rs]
@@ -178,14 +233,23 @@ exprStatement returns [Statement es]
   ;
 
 assignmentStatement returns [Statement ass]
+<<<<<<< HEAD
     : i=idr '=' e=expr SEMICOLON { ass = new AssignmentStatement(i,e); }
+=======
+    : i=id '=' e=expr SEMICOLON { ass = new AssignmentStatement(i,e); }
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
   ;
 
 arrayAssignmentStatement returns [Statement arass]
     :
+<<<<<<< HEAD
     i=idr OPENSQR e1=expr CLOSESQR '=' e2=expr SEMICOLON
     { ArrayReferenceExpression are = new ArrayReferenceExpression(i,e1);
      arass = new ArrayAssignmentStatement(are,e2); }
+=======
+    i=id OPENSQR e1=expr CLOSESQR '=' e2=expr SEMICOLON
+    { arass = new ArrayAssignmentStatement(i,e1,e2); }
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
   ;
 
 block returns [Block b]
@@ -207,7 +271,11 @@ expr returns [Expression e]
     e = it;
 }
     :
+<<<<<<< HEAD
     e1=lessExpr { it = e1; } (s='==' (e2=lessExpr { it = new EqualExpression(it,e2,$s.line, $s.pos); }) )*
+=======
+    e1=lessExpr { it = e1; } ('==' (e2=lessExpr { it = new EqualExpression(it,e2); }) )*
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 lessExpr returns [Expression e]
@@ -218,7 +286,11 @@ lessExpr returns [Expression e]
     e = it;
 }
     :
+<<<<<<< HEAD
     e1=addsubExpr { it = e1; } (s='<' (e2=addsubExpr { it = new LessthanExpression(it,e2,$s.line, $s.pos); } ))*
+=======
+    e1=addsubExpr { it = e1; } ('<' (e2=addsubExpr { it = new LessthanExpression(it,e2); } ))*
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 addsubExpr returns [Expression e]
@@ -231,10 +303,17 @@ addsubExpr returns [Expression e]
     : e1=multiExpr { it = e1; }
     (op=('+'|'-') e2=multiExpr
     { if($op.text.charAt(0)=='+') {
+<<<<<<< HEAD
         it = new AddExpression(it,e2,$op.line, $op.pos);
      }
      if ($op.text.charAt(0)=='-') {
          it = new SubtractExpression(it,e2,$op.line, $op.pos);
+=======
+        it = new AddExpression(it,e2);
+     }
+     if ($op.text.charAt(0)=='-') {
+         it = new SubtractExpression(it,e2);
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
      }
     })*
     ;
@@ -246,11 +325,19 @@ multiExpr returns [Expression e]
 @after {
     e = it;
 }
+<<<<<<< HEAD
     : e1=atom { it = e1; } (s='*' (e2=atom { it = new MultiExpression(it,e2,$s.line, $s.pos); } ))*
     ;
 
 atom returns [Expression e]:
       a=idr { e = a;}
+=======
+    : e1=atom { it = e1; } ('*' (e2=atom { it = new MultiExpression(it,e2); } ))*
+    ;
+
+atom returns [Expression e]:
+      a=id { e = a;}
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     | a=literal { e = a;}
     | a=functionCall { e = a;}
     | a=arrayRef { e = a;}
@@ -264,7 +351,11 @@ arrayRef returns [Expression e]
 @after {
     e = it;
 }
+<<<<<<< HEAD
     : i=idr OPENSQR ee=expr CLOSESQR { it = new ArrayReferenceExpression(i,ee); }
+=======
+    : i=id OPENSQR ee=expr CLOSESQR { it = new ArrayReferenceExpression(i,ee); }
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 functionCall returns [Expression e]
@@ -275,7 +366,11 @@ functionCall returns [Expression e]
     e = it;
 }
     :
+<<<<<<< HEAD
     i=idr { it = new FunctionCallExpression();
+=======
+    i=id { it = new FunctionCallExpression();
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
         it.setId(i); }
         OPENPAREN (e1=expr { it.addElement(e1); }
     (COMMA e2=expr {it.addElement(e2); })*)? CLOSEPAREN
@@ -292,6 +387,7 @@ literal returns [Expression e]:
 
 charLiteral returns [Expression l]
     : c=CHAR
+<<<<<<< HEAD
     { l = new CharacterLiteral($c.text,$c.line, $c.pos);}
     ;
 
@@ -309,6 +405,26 @@ floatLiteral returns [Expression l]
 
 booleanLiteral returns [Expression l]
     : b=BOOLEAN { l = new BooleanLiteral(Boolean.parseBoolean($b.text), $b.line, $b.pos); }
+=======
+    { String s = $c.text;
+      l = new CharacterLiteral(s);}
+    ;
+
+stringLiteral returns  [Expression l]
+    : s=STRING { l = new StringLiteral($s.text); }
+    ;
+
+integerLiteral returns [Expression l]
+    : ('-')? i=INTEGER { l = new IntegerLiteral(Integer.parseInt($i.text));}
+    ;
+
+floatLiteral returns [Expression l]
+    : ('-')? f=FLOAT { l = new FloatLiteral(Float.parseFloat($f.text)); }
+    ;
+
+booleanLiteral returns [Expression l]
+    : b=BOOLEAN { l = new BooleanLiteral(Boolean.parseBoolean($b.text)); }
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     ;
 
 /* Lexer */

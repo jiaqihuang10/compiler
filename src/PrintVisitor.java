@@ -28,12 +28,15 @@ public class PrintVisitor implements Visitor {
         return null;
     }
 
+<<<<<<< HEAD
     public Object visit (IdentifierReference ir) {
         System.out.print(ir.name);
 
         return null;
     }
 
+=======
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     public Object visit (FunctionDeclaration fd) {
         fd.returnType.accept(this);
         System.out.print(" ");
@@ -117,18 +120,31 @@ public class PrintVisitor implements Visitor {
     }
 
     public Object visit (TypeNode tn) {
+<<<<<<< HEAD
         System.out.print(tn.type);
+=======
+        System.out.print(tn.tp);
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
         return null;
     }
 
     //statements
     public Object visit (ArrayAssignmentStatement aas) {
+<<<<<<< HEAD
         aas.are.accept(this);
     /*    System.out.print("[");
         aas.are.accept(this);
         System.out.print("]"); */
         System.out.print("=");
         aas.expr.accept(this);
+=======
+        aas.id.accept(this);
+        System.out.print("[");
+        aas.expr1.accept(this);
+        System.out.print("]");
+        System.out.print("=");
+        aas.expr2.accept(this);
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
         System.out.println(";");
 
         return null;
@@ -273,7 +289,11 @@ public class PrintVisitor implements Visitor {
     public Object visit (FunctionCallExpression fce) {
         fce.id.accept(this);
         System.out.print("(");
+<<<<<<< HEAD
         Enumeration fceEnum = fce.arglist.elements();
+=======
+        Enumeration fceEnum = fce.paralist.elements();
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
         while (fceEnum.hasMoreElements()) {
             Expression e = (Expression)fceEnum.nextElement();
             e.accept(this);

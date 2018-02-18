@@ -15,7 +15,11 @@ public interface Visitor {
     public Object visit (FormalParameter fp);
     public Object visit (FunctionCallExpression ece);
     public Object visit (Identifier i);
+<<<<<<< HEAD
     public Object visit (IdentifierReference ir);
+=======
+    //public Object visit (IdentifierReference ir);
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     public Object visit (IfStatement is);
     public Object visit (LessthanExpression le);
     public Object visit (MultiExpression me);
@@ -35,4 +39,8 @@ public interface Visitor {
     public Object visit (FloatLiteral fl);
     public Object visit (CharacterLiteral cl);
     public Object visit (BooleanLiteral bl);
+<<<<<<< HEAD
+=======
+
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
 }

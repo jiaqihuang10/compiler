@@ -1,5 +1,6 @@
 package ast;
 
+<<<<<<< HEAD
 import semantics.*;
 import type.*;
 
@@ -30,13 +31,25 @@ public class WhileStatement extends Statement {
 
     public int getOffset() {
         return offset;
+=======
+public class WhileStatement extends Statement {
+    Expression expr;
+    Block blk;
+
+    public WhileStatement (Expression e, Block b) {
+        expr = e;
+        blk = b;
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     }
 
     public void accept (Visitor v) {
         v.visit(this);
     }
+<<<<<<< HEAD
 
     public Type accept (TypeVisitor v) throws SemanticException {
         return v.visit(this);
     }
+=======
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
 }

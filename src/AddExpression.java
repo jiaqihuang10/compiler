@@ -1,5 +1,6 @@
 package ast;
 
+<<<<<<< HEAD
 import environment.*;
 import semantics.*;
 import type.*;
@@ -31,13 +32,25 @@ public class AddExpression extends Expression {
 
     public int getOffset(){
         return offset;
+=======
+public class AddExpression extends Expression {
+    Expression expr1;
+    Expression expr2;
+
+    public AddExpression (Expression e1, Expression e2) {
+        expr1 = e1;
+        expr2 = e2;
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
     }
 
     public void accept (Visitor v) {
         v.visit(this);
     }
+<<<<<<< HEAD
 
     public Type accept(TypeVisitor v) throws SemanticException {
         return v.visit(this);
     }
+=======
+>>>>>>> daaabcc7c0d1bdd3a143a14a0ce8f99392224858
 }
