@@ -1,0 +1,14 @@
+int count(int a, int c) {
+	int cc;
+	int[10]arr;
+	float[8] brr;
+	if (arr[3] == brr[10]){}
+}
+
+
+
+void main(){
+	//count(2,1.1);
+	int ab;
+	//ab = "abc" - "add";
+}
